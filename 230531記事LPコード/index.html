@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <title>転送</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          【ULBOブランドTOPページ】
+        </h1>
+      </header>
+
+      <div id="product">
+        <h2></h2>
+        <img src="pic/ULBO_Top.jpg" alt="ULBO Top" />
+      </div>
+    
+      <a
+        class="amazonLink"
+        href="https://www.amazon.co.jp/stores/ULBO/page/6B8A76EA-78A4-436F-A122-93076FE5D8F2/"
+        >Amazon.comで見る</a
+      >
+    </div>
+  </body>
+
+  <script>
+    $(window).on("load", function () {
+      const clipboard = new ClipboardJS("#coupon button");
+
+      clipboard.on("success", function (e) {
+        console.log($("#id .couponResult"));
+
+        $("#coupon .couponResult").text("コピーしました！");
+        e.clearSelection();
+      });
+
+      clipboard.on("error", function (e) {
+        console.error("Action:", e.action);
+        console.error("Trigger:", e.trigger);
+        $("#coupon .couponResult").text(
+          "お使いのブラウザには対応していないようです。"
+        );
+      });
+    });
+  </script>
+</html>

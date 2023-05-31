@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+</script>
+  </script>
+  
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          Amazonで使える70%OFFクーポン<!-- タイトルを変更 -->
+        </h1>
+      </header>
+
+      <div id="product">
+        <h2>ULBO PLATINUM シトルリン アルギニン 亜鉛 厳選8成分180粒 栄養機能食品 </h2> <!-- 商品名を変更 -->
+        <img src="PLATINUM_FB.jpg" alt="画像を追加" /> 
+        <!-- 画像のパス（./koji.jpg）と商品名を変更 -->
+      </div>
+
+      <div id="coupon">
+        <button data-clipboard-text="PFMEXQIG"> <!-- クーポン番号を変更 -->
+          クーポン番号 MNU9TFG9 <!-- クーポン番号を変更 -->
+        </button>
+        <p class="couponResult">タップしてコピー！</p>
+      </div>
+
+      <!-- href が リンクの飛び先 -->
+      <a
+        class="amazonLink"
+        href="https://www.amazon.co.jp/s?k=%E3%82%B7%E3%83%88%E3%83%AB%E3%83%AA%E3%83%B3&rh=p_78%3AB075MDQWM2%2Cssx%3Arelevance"
+        >商品ページに移動する。</a
+      >
+    </div>
+  </body>
+
+  <script>
+    $(window).on("load", function () {
+      const clipboard = new ClipboardJS("#coupon button");
+
+      clipboard.on("success", function (e) {
+        console.log($("#id .couponResult"));
+
+        $("#coupon .couponResult").text("コピーしました！");
+        e.clearSelection();
+      });
+
+      clipboard.on("error", function (e) {
+        console.error("Action:", e.action);
+        console.error("Trigger:", e.trigger);
+        $("#coupon .couponResult").text(
+          "お使いのブラウザには対応していないようです。"
+        );
+      });
+    });
+  </script>
+</html>

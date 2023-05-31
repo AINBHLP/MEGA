@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          タイトル <!-- タイトルを変更 -->
+        </h1>
+      </header>
+
+      <div id="product">
+        <h2>商品名</h2> <!-- 商品名を変更 -->
+        <img src="./koji.jpg" alt="商品名" /> <!-- 画像のパス（./koji.jpg）と商品名を変更 -->
+      </div>
+
+      <div id="coupon">
+        <button data-clipboard-text="3YCZ4JJU"> <!-- クーポン番号を変更 -->
+          クーポン番号 3YCZ4JJU <!-- クーポン番号を変更 -->
+        </button>
+        <p class="couponResult">タップしてコピー！</p>
+      </div>
+
+      <!-- href が リンクの飛び先 -->
+      <a
+        class="amazonLink"
+        href="https://www.amazon.co.jp/s?k=%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E3%82%B5%E3%83%97%E3%83%AA&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&ref=nb_sb_noss"
+        >Amazon.comで見る</a
+      >
+    </div>
+  </body>
+
+  <script>
+    $(window).on("load", function () {
+      const clipboard = new ClipboardJS("#coupon button");
+
+      clipboard.on("success", function (e) {
+        console.log($("#id .couponResult"));
+
+        $("#coupon .couponResult").text("コピーしました！");
+        e.clearSelection();
+      });
+
+      clipboard.on("error", function (e) {
+        console.error("Action:", e.action);
+        console.error("Trigger:", e.trigger);
+        $("#coupon .couponResult").text(
+          "お使いのブラウザには対応していないようです。"
+        );
+      });
+    });
+  </script>
+</html>

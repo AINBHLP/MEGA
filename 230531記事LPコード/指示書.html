@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <!--headタグは触らなくてOK-->
+
+  <!--これ以下を編集するとページが変更される。-->
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          アンケートキャンペーンにご参加いただき誠にありがとうございます！
+          <!-- タイトルを変更 -->
+        </h1>
+      </header>
+
+      <div id="product">
+        <h2>Re:α メンズ育毛剤 220ml 医薬部外品</h2> 
+        <!-- ↑商品名を変更 -->
+        <img src="pic/realpha_ptn1.jpg" alt="画像を追加" />
+        <!--impタグは画像を入れるタグ-->
+        <!--画像のパスを変更-->
+      </div>
+      
+      <div id="coupon">
+        <button> <!--ボタンを設定するコードです。 -->
+         
+          <a 
+         class="amazonLink"
+         href="https://amzn.to/3CXV8TM"
+         ><!-- クーポン番号を変更 -->
+      
+        <p class="couponResult">今すぐ購入はこちら！</p></a>
+      </button>
+      
+      <div id="product">
+        <img src="pic/realpha_longLP.jpeg" alt="画像を追加" /> 
+        <img src="pic/アンケート説明_ポンプ.jpg" alt="画像を追加" />
+        <img src="pic/realpha_text.jpg" alt="画像を追加" />
+        <!-- 画像のパス（pic/koji.jpg-->
+      </div>
+
+      <!-- href が リンクの飛び先 -->
+      <div id="coupon">
+        <button> <!-- クーポン番号を変更 -->
+         
+          <a 
+         class="amazonLink"
+         href="https://amzn.to/3CXV8TM"
+         ><!-- クーポン番号を変更 -->
+      
+        <p class="couponResult">商品詳細ページへ移動する</p>
+      </button>
+      
+    </div>
+  </body>
+  <!--ページ編集はここまで-->
+
+  <!--アクションに対するPOPアップのスクリプト-->
+  <!--触らなくてOK-->
+  <script>
+    $(window).on("load", function () {
+      const clipboard = new ClipboardJS("#coupon button");
+
+      clipboard.on("success", function (e) {
+        console.log($("#id .couponResult"));
+
+        $("#coupon .couponResult").text("コピーしました！");
+        e.clearSelection();
+      });
+
+      clipboard.on("error", function (e) {
+        console.error("Action:", e.action);
+        console.error("Trigger:", e.trigger);
+        $("#coupon .couponResult").text(
+          "お使いのブラウザには対応していないようです。"
+        );
+      });
+    });
+  </script>
+</html>
